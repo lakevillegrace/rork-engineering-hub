@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Civic design system for the Lakeville Engineering Hub.
+   Mirrors the iOS app's palette so the two feel like one product.
+   All colors MUST be HSL. */
+
+@layer base {
+  :root {
+    --background: 210 33% 97.6%;
+    --foreground: 213 30% 14.5%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 213 30% 14.5%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 213 30% 14.5%;
+
+    --primary: 209 59% 30%;
+    --primary-foreground: 210 33% 98%;
+
+    --secondary: 210 26% 94%;
+    --secondary-foreground: 209 59% 30%;
+
+    --muted: 210 26% 94%;
+    --muted-foreground: 211 12% 41%;
+
+    --accent: 206 51% 53%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 3 71% 41%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 210 26% 91%;
+    --input: 210 26% 91%;
+    --ring: 206 51% 53%;
+
+    --radius: 0.75rem;
+
+    /* Civic tokens */
+    --navy: 209 59% 30%;
+    --navy-deep: 208 64% 22%;
+    --steel: 206 51% 53%;
+    --amber: 36 79% 58%;
+    --ink: 213 30% 14.5%;
+    --ink-secondary: 211 12% 41%;
+    --hairline: 210 26% 91%;
+    --ok: 147 46% 34%;
+    --danger: 3 71% 41%;
+
+    --sidebar-background: 208 64% 22%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 36 79% 58%;
+    --sidebar-primary-foreground: 208 64% 15%;
+    --sidebar-accent: 209 55% 28%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 209 45% 30%;
+    --sidebar-ring: 36 79% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    font-feature-settings: "cv05" 1, "ss01" 1;
+  }
+
+  /* Reference numbers, permit IDs and coordinates line up in columns. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .civic-card {
+    @apply rounded-xl border border-border bg-card shadow-[0_1px_2px_rgba(16,32,48,0.04),0_8px_20px_-16px_rgba(16,32,48,0.35)];
+  }
+
+  /* Thin top rule in the county amber, used to mark live/field-impact rows. */
+  .rule-amber {
+    box-shadow: inset 0 2px 0 0 hsl(var(--amber));
+  }
+}
+
+/* Leaflet sits inside rounded civic cards; strip its default chrome. */
+.leaflet-container {
+  background: hsl(210 26% 90%);
+  font-family: inherit;
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.82) !important;
+}
+
+.leaflet-bar a {
+  color: hsl(var(--navy)) !important;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.live-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: hsl(var(--amber));
+  animation: pulse-ring 2.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

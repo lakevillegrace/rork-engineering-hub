@@ -1,0 +1,20 @@
+{
+  "$schema": "https://rork.com/schema/rork.json",
+  "apps": [
+    {
+      "name": "Lakeville Engineering Hub",
+      "path": "ios-lakeville-engineering-hub",
+      "framework": "swift"
+    },
+    {
+      "name": "Lakeville Engineering Hub Web",
+      "path": "web-lakeville-engineering-hub",
+      "framework": "web"
+    },
+    {
+      "name": "Functions",
+      "path": "functions",
+      "framework": "cloudflare"
+    }
+  ]
+}

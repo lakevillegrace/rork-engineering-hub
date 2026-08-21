@@ -1,0 +1,95 @@
+import {
+  Archive,
+  BadgeCheck,
+  BarChart3,
+  Bell,
+  BookMarked,
+  BookOpen,
+  Building2,
+  CalendarDays,
+  CarFront,
+  CircleDollarSign,
+  CircleUser,
+  ClipboardCheck,
+  ClipboardList,
+  CloudRain,
+  FileClock,
+  FileSearch,
+  FileText,
+  Files,
+  FolderCog,
+  Hammer,
+  Inbox,
+  LayoutGrid,
+  Link as LinkIcon,
+  ListChecks,
+  Mail,
+  Map as MapIcon,
+  Network,
+  Package,
+  Phone,
+  PhoneCall,
+  Ruler,
+  Settings2,
+  ShieldCheck,
+  Table2,
+  TrafficCone,
+  TriangleAlert,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+
+/**
+ * Content declares icons by name so the data files stay free of JSX. Anything
+ * unmapped falls back to a neutral link glyph rather than breaking the row.
+ */
+const ICONS: Record<string, LucideIcon> = {
+  Archive,
+  BadgeCheck,
+  BarChart3,
+  Bell,
+  BookMarked,
+  BookOpen,
+  Building2,
+  CalendarDays,
+  CarFront,
+  CircleDollarSign,
+  CircleUser,
+  ClipboardCheck,
+  ClipboardList,
+  CloudRain,
+  FileClock,
+  FileSearch,
+  FileText,
+  Files,
+  FolderCog,
+  Hammer,
+  Inbox,
+  LayoutGrid,
+  Link: LinkIcon,
+  ListChecks,
+  Mail,
+  Map: MapIcon,
+  Network,
+  Package,
+  Phone,
+  PhoneCall,
+  Ruler,
+  Settings2,
+  ShieldCheck,
+  Table2,
+  TrafficCone,
+  TriangleAlert,
+  Users,
+};
+
+export function ResourceIcon({
+  name,
+  className,
+}: {
+  name: string;
+  className?: string;
+}) {
+  const Icon = ICONS[name] ?? LinkIcon;
+  return <Icon className={className} aria-hidden="true" />;
+}
